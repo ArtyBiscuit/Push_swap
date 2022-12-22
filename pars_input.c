@@ -6,8 +6,23 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:07:59 by arforgea          #+#    #+#             */
-/*   Updated: 2022/12/19 14:10:46 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:33:53 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 "1 2 3" 54 "-56" -1 "--42 -1-1" 1.2 55,2 "+56 ++57" +2+4
+
+
+void	ls_swap(t_struct *m1, t_struct *m2)
+{
+	void		*next_tmp;
+	t_struct	*tmp;
+
+	tmp = *m1;
+	*m1 = *s2;
+	*m2 = tmp;
+
+	next_tmp = m1->next;
+	m1->next = m2->next;
+	m2->next = next_tmp;
+}

@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:39:53 by arforgea          #+#    #+#             */
-/*   Updated: 2022/12/21 12:50:36 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:43:45 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,28 @@ char	**split_str(char *str)
 	return (all_input);
 }
 
+int	check_empty_arg(char *arg)
+{
+	int	index;
+
+	index = 0;
+	while (arg[index] == ' ')
+		index++;
+	if (arg[index] == '\0')
+		return (1);
+	return (0);
+}
+
 t_input	*get_input(int argc, char **argv)
 {
 	t_input	*input_data;
 	char	*buff;
+	int		cmp;
 
+	cmp = 0;
+	while (++cmp < argc)
+		if(check_empty_arg(argv[cmp]))
+			return (NULL);
 	input_data = malloc(sizeof(t_input) * 1);
 	if (!input_data)
 		return (NULL);
