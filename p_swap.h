@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:21:59 by arforgea          #+#    #+#             */
-/*   Updated: 2022/12/21 12:41:07 by arforgea         ###   ########.fr       */
+/*   Updated: 2022/12/27 18:45:24 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ struct	s_input
 
 // get_input
 t_input	*get_input(int argc, char **argv);
+
+char    *input_to_str(int argc, char **argv);
+int		check_empty_arg(char *arg);
+
 //	ft_free
 void    free_s_input(t_input *input);
 #endif
