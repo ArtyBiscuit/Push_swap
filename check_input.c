@@ -6,28 +6,21 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:10:04 by arforgea          #+#    #+#             */
-/*   Updated: 2022/12/30 17:43:08 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:27:53 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
 
-#include <stdio.h>
-
 int	check_int_size(char *nbr)
 {
-	char	*check;
-	char	*max_int;
-	char	*min_int;
+	int	error;
 
-	max_int = "2147483647";
-	min_int = "2147483648";
-	if (*nbr == '-')
-		check = min_int;
+	error = 0;
+	ft_atoll(nbr, &error);
+	if (error == 1)
+		return (error);
 	else
-		check = max_int;
-	printf("Debug: check_int_size -> %s\n", check);
-	check = NULL;
-	return (0);
+		return (0);
 }
 
 int	check_nbr(char *nbr)
@@ -53,7 +46,30 @@ int	check_nbr(char *nbr)
 	return (0);
 }
 
-int	check_input(int argc, char **argv)
+int check_double_int(char **array, int array_size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while(i < array_size)
+	{
+		j = i + 1;
+		while(j < array_size)
+		{
+			if (ft_atoi(array[i]) == ft_atoi(array[j]))
+			{
+				free_array(array);
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+char	**check_input(int argc, char **argv)
 {
 	char	*str;
 	char	**f_tab;
@@ -64,25 +80,20 @@ int	check_input(int argc, char **argv)
 	cmp = 0;
 	while (++cmp < argc)
 		if (check_empty_arg(argv[cmp]))
-			printf("Debug{001/Line->20} \"check_empty_arg\" Error\n");
+			return(NULL);
 	str = input_to_str(argc, argv);
-	printf("STR == %s\n", str);
 	f_tab = ft_split(str, ' ');
 	cmp = input_size(str);
+	free(str);
+	if (check_double_int(f_tab, cmp))
+		return (NULL);
 	while (++index < cmp)
 	{
-		if (check_nbr(f_tab[index]))
-			printf("Debug{002/Line->58} \"check_nbr\" Error\n");
-			//free **f_tab
-		check_int_size(f_tab[index]);
+		if (check_nbr(f_tab[index]) || check_int_size(f_tab[index]))
+		{
+			free_array(f_tab);
+			return (NULL);
+		}
 	}
-	index = -1;
-	while (++index < cmp)
-		printf("%d\n", ft_atoi(f_tab[index]));
-	return (0);
-}
-
-int main(int argc, char **argv)
-{
-	check_input(argc, argv);
+	return (f_tab);
 }

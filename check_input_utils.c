@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:36:24 by arforgea          #+#    #+#             */
-/*   Updated: 2022/12/27 18:49:18 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:36:36 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -51,14 +51,6 @@ char	*input_to_str(int argc, char **argv)
 		cmp++;
 	}
 	return (str);
-}
-
-char	**split_str(char *str)
-{
-	char	**all_input;
-
-	all_input = ft_split(str, ' ');
-	return (all_input);
 }
 
 int	check_empty_arg(char *arg)

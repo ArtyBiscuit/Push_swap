@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:21:59 by arforgea          #+#    #+#             */
-/*   Updated: 2022/12/28 14:19:00 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:27:39 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ struct	s_input
 	int		tab_size;
 };
 
+
+long long   ft_atoll(const char *nptr, int *flag);
 // get_input
 t_input	*get_input(int argc, char **argv);
 
+
+char **check_input(int argc, char **argv);
 char    *input_to_str(int argc, char **argv);
 int		check_empty_arg(char *arg);
 int     input_size(char *str);
 
 //	ft_free
-void    free_s_input(t_input *input);
+void    free_array(char **array);
 #endif
