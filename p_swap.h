@@ -31,7 +31,7 @@ long long   ft_atoll(const char *nptr, int *flag);
 // get_input
 t_input	*get_input(int argc, char **argv);
 
-
+int     is_sort(int argc,char **argv, char **array);
 char **check_input(int argc, char **argv);
 char    *input_to_str(int argc, char **argv);
 int		check_empty_arg(char *arg);

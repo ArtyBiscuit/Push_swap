@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 		printf("Error");
 		return (1);
 	}
+	if (is_sort(argc, argv, array))
+		printf("is not sort.\n");
 	printf("Good!");
 	free_array(array);
 	return (0);

@@ -69,6 +69,30 @@ int check_double_int(char **array, int array_size)
 	return (0);
 }
 
+int	is_sort(int argc,char **argv, char **array)
+{
+	int	i;
+	int	j;
+	int	array_size;
+	char	*str;
+
+	str = input_to_str(argc, argv);
+	array_size = input_size(str);
+	i = 0;
+	while(i < array_size)
+	{
+		j = i + 1;
+		while (j < array_size)
+		{
+			if (ft_atoi(array[i]) > ft_atoi(array[j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 char	**check_input(int argc, char **argv)
 {
 	char	*str;
