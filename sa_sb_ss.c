@@ -1,34 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sa_sb_ss.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 19:06:37 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/03 16:08:50 by arforgea         ###   ########.fr       */
+/*   Created: 2023/01/06 15:29:55 by arforgea          #+#    #+#             */
+/*   Updated: 2023/01/06 15:43:49 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
 
-
-#include <stdio.h>
-int	main(int argc, char **argv)
+void	sa(int *a)
 {
-	char **array;
+	int	tmp;
 
-	array = check_input(argc, argv);
-	if (array == NULL)
-	{
-		printf("Error");
-		return (1);
-	}
-	if (is_sort(argc, argv, array))
-	{
-		printf("is sort !\n");
-		return (0);
-	}
-	printf("Good!");
-	free_array(array);
-	return (0);
+	if (a[0] == '\0' || a[1] == '\0')
+		return ;
+	tmp = a[0];
+	a[0] = a[1];
+	a[1] = tmp;
+	write(1, "sa\n", 3);
+	return ;
+}
+
+void	sb(int *b)
+{
+	int	tmp;
+
+	if (b[0] == '\0' || b[1] == '\0')
+		return ;
+	tmp = b[0];
+	b[0] = b[1];
+	b[1] = tmp;
+	write(1, "sb\n", 3);
+	return ;
+}
+
+void	ss(int *a, int *b)
+{
+	sa(&a);
+	sb(&b);
+	write(1, "ss\n", 3);
+	return ;
 }

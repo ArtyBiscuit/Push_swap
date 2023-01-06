@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:10:04 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/02 20:27:53 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:08:01 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -85,12 +85,12 @@ int	is_sort(int argc,char **argv, char **array)
 		while (j < array_size)
 		{
 			if (ft_atoi(array[i]) > ft_atoi(array[j]))
-				return (1);
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 char	**check_input(int argc, char **argv)
