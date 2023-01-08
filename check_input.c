@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:10:04 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/03 16:08:01 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:12:53 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -69,22 +69,18 @@ int check_double_int(char **array, int array_size)
 	return (0);
 }
 
-int	is_sort(int argc,char **argv, char **array)
+int	is_sort(int *array)
 {
 	int	i;
 	int	j;
-	int	array_size;
-	char	*str;
 
-	str = input_to_str(argc, argv);
-	array_size = input_size(str);
 	i = 0;
-	while(i < array_size)
+	while(array[i] != '\0')
 	{
 		j = i + 1;
-		while (j < array_size)
+		while (array[j] != '\0')
 		{
-			if (ft_atoi(array[i]) > ft_atoi(array[j]))
+			if (array[i] > array[j])
 				return (0);
 			j++;
 		}
