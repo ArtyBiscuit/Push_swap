@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:19:34 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/08 18:09:09 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:49:20 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -26,29 +26,24 @@ t_data *lst_link(int nbr, t_data *next, t_data *back)
 		return (nbr_link);
 	}
 	free(nbr_link);
-	return (1);
+	return (NULL);
 }
 
 t_data *lst_create(int *array)
 {
 	t_data	*nbr_lst;
-	t_data	*tmp_next;
-	t_data	*tmp_back;
+	t_data	*tmp_lst;
 	int		cmp;
 
-	tmp_next = NULL;
-	tmp_back = NULL;
-	cmp = 0;
+	cmp = 1;
+	nbr_lst = lst_link(array[cmp - 1], NULL, NULL);
+	if (nbr_lst == NULL)
+		return (NULL);
+	tmp_lst = nbr_lst;
 	while (array[cmp])
 	{
-		if (nbr_lst)
-			nbr_lst->next = lst_link(array[cmp], tmp_next, nbr_lst);
-		else
-		{
-			nbr_lst = lst_link(array[cmp], tmp_next, tmp_back);
-			if (nbr_lst == NULL)
-				return (NULL);
-		}
+		tmp_lst->next = lst_link(array[cmp], NULL, tmp_lst);
+		tmp_lst = tmp_lst->next;
 		cmp++;
 	}
 	return (nbr_lst);

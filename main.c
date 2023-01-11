@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:06:37 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/08 17:19:15 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:01:51 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -51,11 +51,36 @@ int *get_input(int argc, char **argv)
 #include <stdio.h>
 int	main(int argc, char **argv)
 {
+	t_data *lst_a;
+	t_data *lst_b;
+
+	lst_b == NULL;
 	int *test = get_input(argc, argv);
 	if (test == NULL)
 		return (1);
 	if (is_sort(test))
 		return (printf("is sort!"));
+	lst_a = lst_create(test);
+	t_data *tmp = lst_a;
 	free(test);
+	while(tmp->next != NULL)
+	{
+		printf("%d\n", tmp->nbr);
+		tmp = tmp->next;
+	}
+	printf("%d\n", tmp->nbr);
+	printf("-----\n");
+	//sa(&lst_a);
+	//pb(&lst_b, &lst_a);
+	//printf("B: %d\n", lst_b->nbr);
+	//pa(&lst_a, &lst_b);
+	rra(&lst_a);
+	tmp = lst_a;
+	while(tmp->next != NULL)
+	{
+		printf("%d\n", tmp->nbr);
+		tmp = tmp->next;
+	}
+	printf("%d\n", tmp->nbr);
 	return (0);
 }

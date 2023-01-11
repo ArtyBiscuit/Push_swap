@@ -6,41 +6,53 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:29:55 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/06 15:43:49 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:33:53 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
 
-void	sa(int *a)
+void	sa(t_data **a)
 {
-	int	tmp;
+	t_data *tmp;
 
-	if (a[0] == '\0' || a[1] == '\0')
+	if ((*a)->next == NULL)
 		return ;
-	tmp = a[0];
-	a[0] = a[1];
-	a[1] = tmp;
+	else
+	{
+		tmp = (*a)->next;
+		tmp->back = NULL;
+		(*a)->next = tmp->next;
+		(*a)->back = tmp;
+		tmp->next = *a;
+		*a = tmp;
+	}
 	write(1, "sa\n", 3);
 	return ;
 }
 
-void	sb(int *b)
+void	sb(t_data **b)
 {
-	int	tmp;
+	t_data *tmp;
 
-	if (b[0] == '\0' || b[1] == '\0')
+	if ((*b)->next == NULL)
 		return ;
-	tmp = b[0];
-	b[0] = b[1];
-	b[1] = tmp;
+	else
+	{
+		tmp = (*b)->next;
+		tmp->back = NULL;
+		(*b)->next = tmp->next;
+		(*b)->back = tmp;
+		tmp->next = *b;
+		*b = tmp;
+	}
 	write(1, "sb\n", 3);
 	return ;
 }
 
-void	ss(int *a, int *b)
+void	ss(t_data **a,t_data **b)
 {
-	sa(&a);
-	sb(&b);
+	sa(a);
+	sb(b);
 	write(1, "ss\n", 3);
 	return ;
 }

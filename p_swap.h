@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:21:59 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/08 18:08:46 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:06:08 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ typedef struct s_data t_data;
 struct	s_data
 {
 	int		id;
-	int		data;
+	int		nbr;
 	t_data	*next;
-	t_dada	*back;
+	t_data	*back;
 };
 
 
@@ -42,4 +42,16 @@ int     input_size(char *str);
 
 //	ft_free
 void    free_array(char **array);
+//mouv
+void    sb(t_data **b);
+void    sa(t_data **a);
+void    ss(t_data **a,t_data **b);
+void    pb(t_data **b, t_data **a);
+void    pa(t_data **a, t_data **b);
+void    ra(t_data **a);
+void    rb(t_data **b);
+void    rr(t_data **a, t_data **b);
+void    rra(t_data **a);
+void    rrb(t_data **b);
+void    rrr(t_data **a, t_data **b);
 #endif
