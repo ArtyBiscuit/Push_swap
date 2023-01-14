@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct s_data t_data;
 
@@ -32,10 +32,9 @@ struct	s_data
 long long   ft_atoll(const char *nptr, int *flag);
 // get_input
 
-t_data *lst_create(int *array);
-
-int is_sort(int *array);
-char **check_input(int argc, char **argv);
+t_data	*lst_create(int *array, int array_size);
+int		is_sort(int *array, int array_size);
+char	**check_input(int argc, char **argv);
 char    *input_to_str(int argc, char **argv);
 int		check_empty_arg(char *arg);
 int     input_size(char *str);
@@ -54,4 +53,6 @@ void    rr(t_data **a, t_data **b);
 void    rra(t_data **a);
 void    rrb(t_data **b);
 void    rrr(t_data **a, t_data **b);
+//radix
+void    radix_sort(t_data **a, t_data **b);
 #endif

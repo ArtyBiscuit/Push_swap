@@ -69,16 +69,16 @@ int check_double_int(char **array, int array_size)
 	return (0);
 }
 
-int	is_sort(int *array)
+int	is_sort(int *array, int array_size)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while(array[i] != '\0')
+	while(i < array_size)
 	{
 		j = i + 1;
-		while (array[j] != '\0')
+		while (j < array_size)
 		{
 			if (array[i] > array[j])
 				return (0);

@@ -40,7 +40,9 @@ void	pb(t_data **b, t_data **a)
 	*a = tmp_a->next;
 	tmp_a->next = *b;
 	if (*b)
-		(*b)->back = tmp_a;
+	(*b)->back = tmp_a;
 	*b = tmp_a;
 	write(1, "pb\n", 3);
+
+
 }

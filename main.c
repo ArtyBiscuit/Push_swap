@@ -11,16 +11,12 @@
 /* ************************************************************************** */
 #include "p_swap.h"
 
-int	*ft_convert(int argc, char **argv, char **array)
+int	*ft_convert(int array_size, char **array)
 {
-	int		array_size;
-	char	*str;
 	int		*new_array;
 	int		cmp;
 
-	str = input_to_str(argc, argv);
-	array_size = input_size(str);
-	new_array = malloc(sizeof(int) * array_size + 1);
+	new_array = malloc(sizeof(int) * array_size);
 	if (!new_array)
 		return (NULL);
 	cmp = 0;
@@ -29,12 +25,10 @@ int	*ft_convert(int argc, char **argv, char **array)
 		new_array[cmp] = ft_atoi(array[cmp]);
 		cmp++;
 	}
-	free(str);
-	new_array[cmp] = '\0';
 	return (new_array);
 }
 
-int *get_input(int argc, char **argv)
+int *get_input(int argc, char **argv, int input_size)
 {
 	char **array;
 	int *data;
@@ -42,45 +36,30 @@ int *get_input(int argc, char **argv)
 	array = check_input(argc, argv);
 	if (array == NULL)
 		return (NULL);
-	data = ft_convert(argc, argv, array);
+	data = ft_convert(input_size, array);
 	free_array(array);
 	return (data);
 }
-
 
 #include <stdio.h>
 int	main(int argc, char **argv)
 {
 	t_data *lst_a;
 	t_data *lst_b;
-
-	lst_b == NULL;
-	int *test = get_input(argc, argv);
+	char *str = input_to_str(argc, argv);
+	int array_size = input_size(input_to_str(argc, argv));
+	lst_b = NULL;
+	int *test = get_input(argc, argv, array_size);
 	if (test == NULL)
 		return (1);
-	if (is_sort(test))
+	if (is_sort(test, array_size))
 		return (printf("is sort!"));
-	lst_a = lst_create(test);
+	lst_a = lst_create(test, array_size);
 	t_data *tmp = lst_a;
 	free(test);
-	while(tmp->next != NULL)
-	{
-		printf("%d\n", tmp->nbr);
-		tmp = tmp->next;
-	}
-	printf("%d\n", tmp->nbr);
-	printf("-----\n");
-	//sa(&lst_a);
-	//pb(&lst_b, &lst_a);
-	//printf("B: %d\n", lst_b->nbr);
-	//pa(&lst_a, &lst_b);
-	rra(&lst_a);
-	tmp = lst_a;
-	while(tmp->next != NULL)
-	{
-		printf("%d\n", tmp->nbr);
-		tmp = tmp->next;
-	}
-	printf("%d\n", tmp->nbr);
+	radix_sort(&lst_a, &lst_b);
+
+	(void) str;
+	(void) tmp;
 	return (0);
 }
