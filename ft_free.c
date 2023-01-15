@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:03:58 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/02 20:25:49 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 00:28:02 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -22,4 +22,13 @@ void	free_array(char **array)
 		cmp++;
 	}
 	free(array);
+}
+
+void	lst_clear(t_data **lst)
+{
+	if (!lst || !*lst)
+		return ;
+	lst_clear(&((*lst)->next));
+	free(*lst);
+	*lst = NULL;
 }

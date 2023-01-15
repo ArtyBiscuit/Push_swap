@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:19:34 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/11 14:49:20 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 01:48:51 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -25,6 +25,19 @@ t_data *lst_link(int nbr, t_data *next, t_data *back, int id)
 	return (nbr_link);
 }
 
+int	lst_size(t_data *lst)
+{
+	int size;
+
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
+}
+
 int	*sort_array(int *array, int array_size)
 {
 	int	index;
@@ -38,7 +51,7 @@ int	*sort_array(int *array, int array_size)
 	while (++index < array_size)
 		array_sort[index] = array[index];
 	index = 0;
-	while(index < array_size)
+	while(index < array_size - 1)
 	{
 		if (array_sort[index] > array_sort[index + 1])
 		{
@@ -67,6 +80,25 @@ int	get_id(int nbr, int *array, int array_size)
 	return (-1);
 }
 
+t_data	*lst_dup(t_data *lst)
+{
+	t_data	*dup;
+	t_data	*tmp_dup;
+
+	if (lst == NULL)
+		return (NULL);
+	dup = lst_link(lst->nbr, NULL, NULL, lst->id);
+	lst = lst->next;
+	tmp_dup = dup;
+	while (lst)
+	{
+		tmp_dup->next = lst_link(lst->nbr, NULL, tmp_dup, lst->id);
+		lst = lst->next;
+		tmp_dup = tmp_dup->next;
+	}
+	return (dup);
+}
+
 t_data *lst_create(int *array, int size)
 {
 	t_data	*nbr_lst;
@@ -89,5 +121,6 @@ t_data *lst_create(int *array, int size)
 		tmp_lst = tmp_lst->next;
 		cmp++;
 	}
+	free(array_id);
 	return (nbr_lst);
 }

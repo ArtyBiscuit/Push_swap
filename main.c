@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:06:37 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/11 18:01:51 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 00:15:45 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -33,6 +33,8 @@ int *get_input(int argc, char **argv, int input_size)
 	char **array;
 	int *data;
 
+	if (argc == 1)
+		return (NULL);
 	array = check_input(argc, argv);
 	if (array == NULL)
 		return (NULL);
@@ -46,20 +48,27 @@ int	main(int argc, char **argv)
 {
 	t_data *lst_a;
 	t_data *lst_b;
-	char *str = input_to_str(argc, argv);
-	int array_size = input_size(input_to_str(argc, argv));
-	lst_b = NULL;
-	int *test = get_input(argc, argv, array_size);
-	if (test == NULL)
-		return (1);
-	if (is_sort(test, array_size))
-		return (printf("is sort!"));
-	lst_a = lst_create(test, array_size);
-	t_data *tmp = lst_a;
-	free(test);
-	radix_sort(&lst_a, &lst_b);
+	char *str;
+	int array_size;
+	int *array;
 
-	(void) str;
-	(void) tmp;
+
+	str = input_to_str(argc, argv);
+	array_size = input_size(str);
+	free(str);
+	array = get_input(argc, argv, array_size);
+	if (array == NULL)
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	is_sort(array, array_size);
+	lst_a = lst_create(array, array_size);
+	lst_b = NULL;
+	free(array);
+
+	radix_sort(&lst_a, &lst_b);
+	lst_clear(&lst_a);
+	lst_b = NULL;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:10:04 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/08 17:12:53 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/14 22:58:53 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -86,7 +86,8 @@ int	is_sort(int *array, int array_size)
 		}
 		i++;
 	}
-	return (1);
+	free(array);
+	exit(0);
 }
 
 char	**check_input(int argc, char **argv)

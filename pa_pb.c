@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:38:58 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/11 17:13:43 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 01:16:41 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -28,7 +28,7 @@ void	pa(t_data **a, t_data **b)
 	write(1, "pa\n", 3);
 }
 
-void	pb(t_data **b, t_data **a)
+void	pb(t_data **b, t_data **a, int bequiet)
 {
 	t_data	*tmp_a;
 
@@ -42,7 +42,6 @@ void	pb(t_data **b, t_data **a)
 	if (*b)
 	(*b)->back = tmp_a;
 	*b = tmp_a;
-	write(1, "pb\n", 3);
-
-
+	if (!bequiet)
+		write(1, "pb\n", 3);
 }
