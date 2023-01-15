@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC = check_input.c check_input_utils.c ft_free.c main.c ra_rb_rr.c rra_rrb_rrr.c lst_create.c radix_sort.c pa_pb.c $(wildcard libft/*.c)
+SRC = check_input.c check_input_utils.c ft_free.c get_id.c get_input.c lst_create.c main.c pa_pb_ra_rra.c radix_exe.c radix_sort.c sa_sb.c $(wildcard libft/*.c)
 OBJ = $(SRC:%.c=%.o)
 INC = -Ilibft
 LIB = libft/libft.a

@@ -6,15 +6,15 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:06:37 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/15 00:15:45 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:21:25 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
 
 int	*ft_convert(int array_size, char **array)
 {
-	int		*new_array;
-	int		cmp;
+	int	*new_array;
+	int	cmp;
 
 	new_array = malloc(sizeof(int) * array_size);
 	if (!new_array)
@@ -28,10 +28,10 @@ int	*ft_convert(int array_size, char **array)
 	return (new_array);
 }
 
-int *get_input(int argc, char **argv, int input_size)
+int	*get_input(int argc, char **argv, int input_size)
 {
-	char **array;
-	int *data;
+	char	**array;
+	int		*data;
 
 	if (argc == 1)
 		return (NULL);
@@ -43,15 +43,13 @@ int *get_input(int argc, char **argv, int input_size)
 	return (data);
 }
 
-#include <stdio.h>
 int	main(int argc, char **argv)
 {
-	t_data *lst_a;
-	t_data *lst_b;
-	char *str;
-	int array_size;
-	int *array;
-
+	t_data	*lst_a;
+	t_data	*lst_b;
+	char	*str;
+	int		array_size;
+	int		*array;
 
 	str = input_to_str(argc, argv);
 	array_size = input_size(str);
@@ -66,8 +64,7 @@ int	main(int argc, char **argv)
 	lst_a = lst_create(array, array_size);
 	lst_b = NULL;
 	free(array);
-
-	radix_sort(&lst_a, &lst_b);
+	sort(&lst_a, &lst_b);
 	lst_clear(&lst_a);
 	lst_b = NULL;
 	return (0);

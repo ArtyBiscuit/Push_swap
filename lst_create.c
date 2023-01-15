@@ -6,14 +6,14 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:19:34 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/15 01:48:51 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:38:52 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
 
-t_data *lst_link(int nbr, t_data *next, t_data *back, int id)
+t_data	*lst_link(int nbr, t_data *next, t_data *back, int id)
 {
-	t_data *nbr_link;
+	t_data	*nbr_link;
 
 	nbr_link = malloc(sizeof(t_data) * 1);
 	if (!nbr_link)
@@ -27,7 +27,7 @@ t_data *lst_link(int nbr, t_data *next, t_data *back, int id)
 
 int	lst_size(t_data *lst)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	while (lst)
@@ -41,8 +41,8 @@ int	lst_size(t_data *lst)
 int	*sort_array(int *array, int array_size)
 {
 	int	index;
-	int tmp;
-	int *array_sort;
+	int	tmp;
+	int	*array_sort;
 
 	array_sort = malloc(sizeof(int) * array_size);
 	if (array_sort == NULL)
@@ -51,7 +51,7 @@ int	*sort_array(int *array, int array_size)
 	while (++index < array_size)
 		array_sort[index] = array[index];
 	index = 0;
-	while(index < array_size - 1)
+	while (index < array_size - 1)
 	{
 		if (array_sort[index] > array_sort[index + 1])
 		{
@@ -64,20 +64,6 @@ int	*sort_array(int *array, int array_size)
 			index++;
 	}
 	return (array_sort);
-}
-
-int	get_id(int nbr, int *array, int array_size)
-{
-	int	id;
-
-	id = 0;
-	while (id < array_size)
-	{
-		if(array[id] == nbr)
-			return (id);
-		id++;
-	}
-	return (-1);
 }
 
 t_data	*lst_dup(t_data *lst)
@@ -99,7 +85,7 @@ t_data	*lst_dup(t_data *lst)
 	return (dup);
 }
 
-t_data *lst_create(int *array, int size)
+t_data	*lst_create(int *array, int size)
 {
 	t_data	*nbr_lst;
 	t_data	*tmp_lst;

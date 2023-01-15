@@ -6,12 +6,12 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:36:24 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/15 00:04:26 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:17:05 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
 
-int		input_size(char *str)
+int	input_size(char *str)
 {
 	int	cmp;
 	int	index;

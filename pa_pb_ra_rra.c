@@ -6,7 +6,7 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:38:58 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/15 01:16:41 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:34:14 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
@@ -44,4 +44,36 @@ void	pb(t_data **b, t_data **a, int bequiet)
 	*b = tmp_a;
 	if (!bequiet)
 		write(1, "pb\n", 3);
+}
+
+void	ra(t_data **a)
+{
+	t_data	*ass;
+
+	ass = *a;
+	while (ass->next)
+		ass = ass->next;
+	ass->next = *a;
+	ass->next->back = ass;
+	*a = (*a)->next;
+	(*a)->back = NULL;
+	ass->next->next = NULL;
+	write(1, "ra\n", 3);
+}
+
+void	rra(t_data **a)
+{
+	t_data	*head;
+	t_data	*ass;
+
+	head = *a;
+	ass = *a;
+	while (ass->next)
+		ass = ass->next;
+	ass->back->next = NULL;
+	ass->back = NULL;
+	ass->next = head;
+	head->back = ass;
+	*a = ass;
+	write(1, "rra\n", 4);
 }

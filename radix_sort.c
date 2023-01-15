@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/15 11:29:48 by arforgea          #+#    #+#             */
+/*   Updated: 2023/01/15 11:30:12 by arforgea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "p_swap.h"
 
-int get_bin(int max)
+int	get_bin(int max)
 {
-	int bin;
+	int	bin;
 
 	bin = 0;
 	while (max)
@@ -13,10 +24,10 @@ int get_bin(int max)
 	return (bin);
 }
 
-int		if_ra(t_data **a, t_data **b, int i, int j)
+int	if_ra(t_data **a, t_data **b, int i, int j)
 {
-	t_data *cpy_a;
-	t_data *cpy_b;
+	t_data	*cpy_a;
+	t_data	*cpy_b;
 
 	cpy_a = lst_dup(*a);
 	cpy_b = lst_dup(*b);
@@ -36,13 +47,30 @@ int		if_ra(t_data **a, t_data **b, int i, int j)
 	return (0);
 }
 
+void	sort(t_data **a, t_data **b)
+{
+	int	size;
+
+	size = lst_size(*a);
+	if (size == 2)
+		sa(a);
+	else if (size == 3)
+		for_three(a);
+	else if (size == 4)
+		for_four(a, b);
+	else if (size == 5)
+		for_five(a, b);
+	else
+		radix_sort(a, b);
+}
+
 void	radix_sort(t_data **a, t_data **b)
 {
-	int size;
-	int bit;
-	int i;
-	int j;
-	
+	int	size;
+	int	bit;
+	int	i;
+	int	j;
+
 	size = lst_size(*a);
 	bit = get_bin(size - 1);
 	i = 0;

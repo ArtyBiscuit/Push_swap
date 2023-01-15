@@ -6,14 +6,14 @@
 /*   By: arforgea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:29:55 by arforgea          #+#    #+#             */
-/*   Updated: 2023/01/11 15:33:53 by arforgea         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:14:26 by arforgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_swap.h"
 
 void	sa(t_data **a)
 {
-	t_data *tmp;
+	t_data	*tmp;
 
 	if ((*a)->next == NULL)
 		return ;
@@ -32,7 +32,7 @@ void	sa(t_data **a)
 
 void	sb(t_data **b)
 {
-	t_data *tmp;
+	t_data	*tmp;
 
 	if ((*b)->next == NULL)
 		return ;
@@ -46,13 +46,5 @@ void	sb(t_data **b)
 		*b = tmp;
 	}
 	write(1, "sb\n", 3);
-	return ;
-}
-
-void	ss(t_data **a,t_data **b)
-{
-	sa(a);
-	sb(b);
-	write(1, "ss\n", 3);
 	return ;
 }
